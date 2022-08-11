@@ -8,11 +8,14 @@ application consisting of muliple Active Objects.
 Additionally, the application demonstrates the use of the Zephyr's console UART
 to implement [QP/Spy software tracing](https://www.state-machine.com/qtools/qpspy.html).
 
+## Credits
+This example application has been originally created by [Victor Chavez](https://github.com/vChavezB).
+
 
 ### Cloning
 This repository depends on the [qpc](https://github.com/QuantumLeaps/qpc)
-reposiotory containing the QP/C framework and port to Zephyr, packaged together as
-an external [Zephyr module](https://docs.zephyrproject.org/latest/develop/modules.html).
+reposiotory containing the QP/C framework and port to Zephyr, packaged together as an external
+[Zephyr module](https://docs.zephyrproject.org/latest/develop/modules.html).
 For that reason, to clone also the submodule, the usual `git clone` command needs to be
 followed by `--recurse-submodules`
 
