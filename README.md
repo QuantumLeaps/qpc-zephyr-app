@@ -1,3 +1,5 @@
+![QP Zephyr Module](img/qp-zephyr.jpg)
+
 # QP/C Application with Zephyr
 This repository provides an example and a good starting point for deveoping
 [QP/C](https://github.com/QuantumLeaps/qpc) applications with Zephyr.
@@ -20,24 +22,27 @@ For that reason, to clone also the submodule, the usual `git clone` command need
 followed by `--recurse-submodules`
 
 ```bash
-git clone https://github.com/QuantumLeaps/qpc-zephyr-app --recurse-submodules
+git clone https://github.com/QuantumLeaps/qpc-zephyr-app <my_project> --recurse-submodules --depth 1
 ```
+where, `<my_project>` is the custom name you can give to your project.
 
 This step produces the following subfolders in your current directory:
 
 ```
 <current-dir>
  |
- +- qpc-zephyr-app/    - QP/C application for zephyr
-    +- qpc/            - QP/C framework
-    |  +- zephyr/      - Zephyr module and QP/C port to Zephyr
+ +- <my_project>/      - your QP project
+    +- .git/           - git history (safe to delete to save disk space)
     |
-    +- CMakeLists.txt  - files only for this application
-    +- prj.conf        - congiguration only for this application
+    +- qpc/            - QP/C framework
+    |  +- zephyr/      - QP/C Zephyr module (don't touch)
+    |
+    +- CMakeLists.txt  - files to build this project (custimize)
+    +- prj.conf        - congiguration for this project (customize)
 ```
 
 # Building the Project
-Change directory to `qpc-zephyr-app` and type:
+Change directory to `<my_project>` and type:
 
 ```bash
 west build -b <board>
@@ -47,13 +52,20 @@ specific example for the `nucleo_h743zi` board:
 west build -b nucleo_h743zi
 ```
 
-## QP/Spy Build Configuration
-The [QP/Spy software tracing](https://www.state-machine.com/qtools/qpspy.html) is enabled
-by default in `prj.conf` as `CONFIG_QSPY=y`. This is passed to the
-[qpc-zephyr module](https://github.com/QuantumLeaps/qpc-zephyr) and automatically selects
-the correct files to build QP/Spy for your Zephyr application. If you don't wish to build with QP/Spy, simply comment out `#CONFIG_QSPY=y` in `prj.conf`.
+# QP/Spy Build Configuration
+The QP/C Zephyr Module supports the
+[QSPY Software Tracing](https://www.state-machine.com/qtools/qpspy.html)
+option and will add the appropriate macros and files to build the "QSPY"
+configuration.
 
-> NOTE: The QP/Spy software tracing uses the Zephyr's console UART. This means that the Zephyr `printk()` facility cannot be used while QP/Spy is configured.
+If you wish to enable "QSPY" you can provide the option "QSPY"
+in the command-line for the build. For example:
+
+```bash
+west build -b nucleo_h743zi -- -DQSPY=ON
+```
+
+> **NOTE:** The QP/Spy software tracing uses the Zephyr's console UART. This means that the Zephyr `printk()` facility cannot be used while QP/Spy is configured.
 
 
 # Flashing the Board
@@ -73,7 +85,8 @@ If yo have built the example with QP/Spy, you might want to watch the QP/Spy out
 To receive the QP/Spy sotwre tracing output you need to run a special [qspy host application](https://www.state-machine.com/qtools/qspy.html).
 
 > NOTE: You might need to build the `qspy` host utility on your machine.
-The QSPY utility is available in the [QTools collection](https://github.com/QuantumLeaps/qtools/tree/master/qspy).
+The QSPY utility is available in
+[QTools collection](https://github.com/QuantumLeaps/qtools/tree/master/qspy).
 
 
 To launch the `qspy` host uility, open a separate terminal and run
