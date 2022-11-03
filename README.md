@@ -79,17 +79,17 @@ The example runs right away after flashing. (Some boards might need to be reset)
 
 
 ## Using the QP/SPY Software Tracing
-If yo have built the example with QP/Spy, you might want to watch the QP/Spy output.
+If you have built the example with QP/Spy, you might want to watch the QP/Spy output.
 
 ### The QSPY Host Utility
-To receive the QP/Spy sotwre tracing output you need to run a special [qspy host application](https://www.state-machine.com/qtools/qspy.html).
+To receive the QP/Spy software tracing output you need to run a special [qspy host application](https://www.state-machine.com/qtools/qspy.html).
 
 > NOTE: You might need to build the `qspy` host utility on your machine.
 The QSPY utility is available in
 [QTools collection](https://github.com/QuantumLeaps/qtools/tree/master/qspy).
 
 
-To launch the `qspy` host uility, open a separate terminal and run
+To launch the `qspy` host utility, open a separate terminal and run
 ```
 qspy -c <serial-port>
 ```
