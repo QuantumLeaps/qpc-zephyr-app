@@ -1,7 +1,7 @@
 //============================================================================
-// Product: Board Support Package example
-// Last Updated for Version: 7.3.0
-// Date of the Last Update:  2023-08-12
+// QP configuration file example
+// Last updated for version: 7.3.0
+// Last updated on: 2023-09-26
 //
 //                   Q u a n t u m  L e a P s
 //                   ------------------------
@@ -26,24 +26,16 @@
 // Plagiarizing this software to sidestep the license obligations is illegal.
 //
 // Contact information:
-// <www.state-machine.com/licensing>
+// <www.state-machine.com>
 // <info@state-machine.com>
 //============================================================================
-#ifndef BSP_H_
-#define BSP_H_
+#ifndef QP_CONFIG_H_
+#define QP_CONFIG_H_
 
-#define BSP_TICKS_PER_SEC    1000U
+// NOTE:
+// This QP configuration header file must be provided in the QP applications
+// for the Zephyr RTOS. This file might be empty, if the default settings of
+// the QP framework are adequate. The configuration options for QP framework
+// ared documented at: https://www.state-machine.com/qpc/qp__config_8h.html
 
-void BSP_init(void);
-void BSP_start(void);
-void BSP_displayPaused(uint8_t paused);
-void BSP_displayPhilStat(uint8_t n, char const *stat);
-void BSP_terminate(int16_t result);
-
-void BSP_randomSeed(uint32_t seed); // random seed
-uint32_t BSP_random(void); // pseudo-random generator
-
-void BSP_ledOn(void);
-void BSP_ledOff(void);
-
-#endif // BSP_H_
+#endif // QP_CONFIG_H_
