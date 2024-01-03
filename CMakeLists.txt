@@ -27,6 +27,12 @@ target_sources(app PRIVATE
  src/table.c
 )
 
+zephyr_include_directories(
+ ${QPC}/include
+ ${QPC}/zephyr
+ ./src
+)
+
 # option to turn QSPY software tracing ON or OFF
 # NOTE: Typically specified on command-line, e.g.:
 # west build -b <board> -- -DQSPY=ON
